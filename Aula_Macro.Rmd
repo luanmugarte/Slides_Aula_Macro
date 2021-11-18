@@ -1,0 +1,101 @@
+---
+title: "Aula - Macro"
+author: "Luan Mugarte"
+output: 
+  flexdashboard::flex_dashboard:
+    vertical_layout: scroll
+    orientation: rows
+    social: menu
+    source_code: embed
+---
+
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(plotly)
+library(plyr)
+library(flexdashboard)
+setwd("~/Doutorado/PED - CE342/Aulas/Macro/Slides_Aula_Macro")
+
+source('Pacotes.R', verbose = F)
+source('Graficos_Aula_Macro.R', verbose = F)
+```
+
+Inflação, Metas e decomposição
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Metas de Inflação
+
+```{r}
+p_metas
+
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Inflação e Decomposição do BCB
+
+```{r}
+p_IPCA_BCB
+```
+
+Row
+-----------------------------------------------------------------------
+
+### Inflação, bens industrializados e serviços
+
+```{r}
+p_IPCA_Ind
+```
+
+
+RMI e setor externo
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Índice de Commodities
+
+```{r}
+p_IBC
+```
+
+### Taxa Selic, FED Rates, Risco Soberano e Taxa de Câmbio nominal
+
+```{r}
+p_juros_cambio
+```
+
+### indices MSCI e VIX
+
+```{r}
+p_VIX_MSCI
+```
+
+Atividade Econômica
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+
+### Taxa de crescimento real do PIB e hiato do produto
+
+```{r}
+p_PIB_Hiato
+```
+
+Mercado de trabalho
+=======================================================================
+
+Row
+-----------------------------------------------------------------------
+### Mercado de Trabalho
+
+```{r circos, fig.align='center', fig.width = 2, fig.height = 1}
+knitr::include_graphics("Dados/Mercado_trabalho.png")
+```
