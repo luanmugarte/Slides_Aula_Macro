@@ -152,7 +152,7 @@ metas_mensalplot <- ggplot(df_metas)  +
   scale_x_date(date_breaks = '1 year', date_minor_breaks = '6 months', date_labels = "%y",expand = c(0, 0.02)) +
   # scale_x_continuous(breaks=seq(1999,2021,1),                       
   #                     labels=paste(c(""),rep(1999:2021,each=1)),expand = c(0.012, 0.02)) +
-  labs(title = 'Taxa de Inflação acumulada em 12 meses e bandas do Regime de Metas da Inflação.') +
+  labs(title = 'IPCA acumulado em 12 meses e bandas do Regime de Metas da Inflação.') +
   scale_fill_brewer(palette="Blues", name = 'Períodos') +
   guides(fill = "none") +
   ylab('') +
@@ -169,9 +169,9 @@ metas_mensalplot <- ggplot(df_metas)  +
           axis.text.y = element_text(size=10)) 
 
 metas_mensalplot
-p <- ggplotly(metas_mensalplot) %>%
+p <- ggplotly(metas_mensalplot, tooltip = c("x", "y")) %>%
   layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 p
 # For loop para remover legendas
 for (i in 1:8) {
@@ -213,7 +213,7 @@ IPCA_BCB_plot <- ggplot(df)  +
   scale_x_date(date_breaks = '1 year', date_minor_breaks = '6 months', date_labels = "%y",expand = c(0, 0.02)) +
   # scale_x_continuous(breaks=seq(1999,2021,1),                       
   #                     labels=paste(c(""),rep(1999:2021,each=1)),expand = c(0.012, 0.02)) +
-  labs(title = 'Decomposição do IPCA') +
+  labs(title = 'Decomposição do IPCA de acordo com o BCB') +
   scale_fill_brewer(palette="Blues", name = 'Períodos') +
   scale_color_brewer(palette="Set1", name = 'Períodos') +
   guides(linetype = "none", fill = 'none') +
@@ -232,9 +232,9 @@ IPCA_BCB_plot <- ggplot(df)  +
 
 IPCA_BCB_plot
 
-p <- ggplotly(IPCA_BCB_plot) %>%
+p <- ggplotly(IPCA_BCB_plot, tooltip = c("x", "y")) %>%
   layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 
 # For loop para remover legendas
 for (i in 2:9) {
@@ -285,9 +285,9 @@ IPCA_Ind_plot <- ggplot(df)  +
 
 IPCA_Ind_plot
 
-p <- ggplotly(IPCA_Ind_plot) %>%
+p <- ggplotly(IPCA_Ind_plot, tooltip = c("x", "y")) %>%
   layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 
 # For loop para remover legendas
 for (i in 2:9) {
@@ -341,9 +341,9 @@ IBC_plot <- ggplot(df)  +
 
 IBC_plot
 
-p <- ggplotly(IBC_plot) %>%
+p <- ggplotly(IBC_plot, tooltip = c("x", "y")) %>%
   layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 # For loop para remover legendas
 for (i in 1:6) {
   p$x$data[[i]]$showlegend <- F
@@ -354,7 +354,7 @@ p_IBC <- p
 
 
 
-# Fiscal ####
+# Fiscal #########################################################################################################################
 
 date <- seq(as.Date("2002-11-1"), as.Date("2021-09-1"), by = "month")
 
@@ -397,10 +397,10 @@ fiscal_plot <- ggplot(df)  +
 
 fiscal_plot
 
-p <- ggplotly(fiscal_plot) %>%
+p <- ggplotly(fiscal_plot, tooltip = c("x", "y")) %>%
   layout(legend = list(orientation = "h", x = 0, y =-0.2)
   )%>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 
 
 
@@ -413,7 +413,7 @@ p_fiscal <- p
 p_fiscal
 
 
-# Cambio, Fed, EMBI ####
+# Cambio, Fed, EMBI ######################################################################################################
 
 date <- seq(as.Date("1999-08-1"), as.Date("2021-10-1"), by = "month")
 embi_2 <- embi/100
@@ -478,12 +478,12 @@ ay <- list(
   title = ""
 )
 
-p <- ggplotly(Juros_cambio_plot) %>%
+p <- ggplotly(Juros_cambio_plot, tooltip = c("x", "y")) %>%
   add_lines(x=~date, y=~value, colors=NULL, yaxis="y2", 
             data=df, showlegend=FALSE, inherit=FALSE) %>%
   layout(yaxis2 = ay, legend = list(orientation = "h", x = 0, y =-0.2)
          )%>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 
 
 
@@ -494,7 +494,7 @@ for (i in 1:6) {
 }
 p_juros_cambio <- p
 
-# PIB e Hiato ####
+# PIB e Hiato #########################################################################################################
 
 date <- seq(as.Date("1999-03-1"), as.Date("2021-2-1"), by = "quarter")
 pib
@@ -537,9 +537,9 @@ PIB_Hiato_plot <- ggplot(df)  +
 
 PIB_Hiato_plot
 
-p <- ggplotly(PIB_Hiato_plot) %>%
+p <- ggplotly(PIB_Hiato_plot, tooltip = c("x", "y")) %>%
   layout(legend = list(orientation = "h", x = 0, y =-0.2))%>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 p
 # For loop para remover legendas
 for (i in 1:6) {
@@ -549,7 +549,7 @@ for (i in 1:6) {
 p_PIB_Hiato <- p
 
 
-# VIX e MSCI ####
+# VIX e MSCI ###################################################################################################################
 
 date <- seq(as.Date("1999-08-1"), as.Date("2021-10-1"), by = "month")
 max_length <- max(c(length(vix[,2]), length(MSCI[,2])))    # Find out maximum length
@@ -609,7 +609,7 @@ ay <- list(
   title = ""
 )
 ay
-p <- ggplotly(VIX_MSCI_plot) %>%
+p <- ggplotly(VIX_MSCI_plot,  tooltip = c("x", "y")) %>%
   add_lines(x=~date, y=~value, colors=NULL, yaxis="y2", 
             data=df, showlegend=FALSE, inherit=FALSE) %>%
   layout(yaxis2 = ay,
@@ -617,7 +617,7 @@ p <- ggplotly(VIX_MSCI_plot) %>%
          margin = list(r = 25)
          
   ) %>%
-  config(displayModeBar = FALSE)
+  config(modeBarButtons = list(list("resetScale2d"), list('toggleSpikelines'),list('hoverCompareCartesian'),list('hoverClosestCartesian')), displaylogo = FALSE)
 p
 
 # For loop para remover legendas

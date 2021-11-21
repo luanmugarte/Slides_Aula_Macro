@@ -144,16 +144,13 @@ Análise dos períodos
 
   - Descumprimento da meta nos anos de 2001, 2002 e 2003. 
 
-- Principais determinates da inflação:
-  - Inflação de preços monitorados 
-    - Desvalorização cambial em 1999
-    - Crise energética nos anos 2001
-    - Turbulência política e forte desvalorização cambial em 2002
+- Política monetária
+  - Alto nível nominal
+  - Variações acompanham a necessidade de controle inflacionário
   
-  - Bens tradables
-    - Desvalorização cambial e preços de *commodities* (em menor medida)
 
 ## Gráficos - Período I (1999-2003) {.smaller}
+<div style="float: left; width: 80%;">
 
 ```{r, fig.align='center', echo = FALSE}
 p_metas
@@ -164,52 +161,6 @@ p_metas
 p_IPCA_BCB
 ```
 <font size="3">  Fonte: IBGE e BCB. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_juros_cambio
-```
-<font size="3"> Fonte: BCB, IPEA e FED. </font>
-
-## Período II (2004-2010) {.smaller}
-
-- Características do período:
-  - Inflação mais baixa e estável, oscilando sobre a meta
-  - Processo de valorização cambial
-  - Patamar de crescimento econômico mais elevado
-  - Contínuo aquecimento do mercado de trabalho, estimulado pelas políticas sociais
-  - Manutenção das altas taxas de juros nominais - isto é, elevados juros reais. 
-
-- Principais determinates da inflação:
-  - Fatores altistas
-    - Aquecimento do mercado de trabalho
-      - Inflação de serviços e de semiduráveis
-    - Ciclo de *commodities*
-      - Gêneros alimentícios
-      
-  - Fatores baixistas
-    - Valorização cambial
-      - Auxilia no controle dos bens tradables
-    - Preços de bens duráveis
-      - Economias de escala, câmbio valorizado e inovações (BRAGA, 2013; SANTORO, 2015)
-      - Redução do IPI para automóveis em 2008
-    - Crise de 2008
-
-## Gráficos - Período II (2004-2010) {.smaller}
-
-```{r, fig.align='center', echo = FALSE}
-p_metas
-```
-<font size="3"> Fonte: IBGE e BCB. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_IPCA_BCB
-```
-<font size="3">  Fonte: IBGE e BCB. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_PIB_Hiato
-```
-<font size="3"> Fonte: BCB e IPEA. </font>
 
 ```{r, fig.align='center', echo = FALSE}
 p_juros_cambio
@@ -221,14 +172,169 @@ p_VIX_MSCI
 ```
 <font size="3"> Fonte: CBOE. </font>
 
+
+</div>
+
+<!------------------- Segunda Coluna ------------------------------------>
+
+<div style="float: right; width: 20%;">
+<br>
+<br>
+<br>
+
+- Descumprimento da meta nos anos de 2001, 2002 e 2003.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Inflação de monitorados 
+  - Crise energética em 2001/02
+  - Forte desvalorização cambial em 2002
+
+- Bens tradables
+
+<br>
+<br>
+<br>
+
+- Ciclo de juros
+  - Queda até início de 2001
+  - Tendência de aumentos até meados de 2003
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Risco soberano decola em 2002.
+</div>
+
+## Período II (2004-2010) {.smaller}
+
+- Características do período:
+  - Inflação mais baixa e estável, oscilando sobre a meta
+  - Processo de valorização cambial
+  - Patamar de crescimento econômico mais elevado
+  - Contínuo aquecimento do mercado de trabalho, estimulado pelas políticas sociais
+  - Crise de 2008
+  
+- Política monetária:
+  - Manutenção das altas taxas de juros nominais - isto é, elevados juros reais. 
+
+## Gráficos - Período II (2004-2010) {.smaller}
+<div style="float: left; width: 80%;">
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_Ind
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
 ```{r, fig.align='center', echo = FALSE}
 p_IBC
 ```
 <font size="3"> Fonte: BCB e FMI. </font>
 
 ```{r, fig.align='center', echo = FALSE}
+p_VIX_MSCI
+```
+<font size="3"> Fonte: CBOE. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_PIB_Hiato
+```
+<font size="3"> Fonte: BCB e IPEA. </font>
+
+```{r, fig.align='center', echo = FALSE}
 knitr::include_graphics("Dados/Mercado_trabalho.png")
 ```
+</div> 
+
+<div style="float: right; width: 20%;">
+<br>
+<br>
+<br>
+
+- Oscilação sobre a **meta**.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Manutenação de altos juros nominais
+- Valorização cambial
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Queda dos bens tradables
+
+
+<br>
+<br>
+
+- Deflação de bens duráveis
+  - Economias de escala, câmbio valorizado e inovações (BRAGA, 2013; SANTORO, 2015)
+  - Redução do IPI para automóveis em 2008
+
+<br>
+<br>
+<br>
+<br> 
+<br>
+<br> 
+
+- Ciclo de *commodities*
+    - Gêneros alimentícios
+
+<br>
+<br>
+<br>
+<br>
+<br> 
+<br> 
+
+  
+- Cenário internacional favorável
+
+<br>
+<br>
+<br>
+<br>
+<br> 
+<br>
+<br>
+<br> 
+
+- Aquecimento da economia
+</div>
 
 ## Período III (2011-2014) {.smaller}
 
@@ -241,28 +347,24 @@ knitr::include_graphics("Dados/Mercado_trabalho.png")
 - Política monetária: ruptura e tentativa de reduzir o patamar da taxa de juros nominal, posteriormente interrompido.
   - Agenda Fiesp (Carvalho, 2018)
 
-- Principais determinates da inflação:
-  - Fatores altistas
-    - Mercado de trabalho aquecido
-      - Inflação de serviços
-
-  - Fatores baixistas
-    - Desonerações tributárias e preços monitorados
-      - Energia elétrica, CIDE de combustível, IPI de automóveis (2012)
-
 ## Gráficos - Período III (2011-2014) {.smaller}
-
+<div style="float: left; width: 80%;">
 ```{r, fig.align='center', echo = FALSE}
 p_metas
 ```
 <font size="3"> Fonte: IBGE e BCB. </font>
 
 ```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+```{r, fig.align='center', echo = FALSE}
 p_IPCA_BCB
 ```
 <font size="3">  Fonte: IBGE e BCB. </font>
 
-```{r, fig.align='center', echo = FALSE}
+```{r, out.width = "90%", fig.align='center', echo = FALSE}
 knitr::include_graphics("Dados/Mercado_trabalho.png")
 ```
 
@@ -271,10 +373,50 @@ p_IPCA_Ind
 ```
 <font size="3">  Fonte: IBGE e BCB. </font>
 
-```{r, fig.align='center', echo = FALSE}
-p_juros_cambio
-```
-<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+
+</div>
+
+<div style="float: right; width: 20%;">
+<br>
+<br>
+<br>
+
+- IPCA oscila perto do **teto**.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Ruptura em agosto de 2011
+- Retomada de elevações em 2013
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Desonerações tributárias e preços monitorados
+  - Energia elétrica, CIDE de combustível, IPI de automóveis (2012)
+  
+<br>
+<br>
+<br>
+<br>
+<br>
+      
+- Mercado de trabalho aquecido
+  - Inflação de serviços
+
+<br>
+<br>
 
 ## Período IV (2015-2016) {.smaller}
 
@@ -282,19 +424,15 @@ p_juros_cambio
   - Inflação bem elevada, descumprindo a meta em 2015
   - Forte desvalorização cambial
   - Recessão econômica
-  - *Impeachment* da Dilma e início do período de reformas estruturais
+  - Troca de governos e início do período de reformas estruturais
     - PEC do Teto de Gastos (2016)
 
 - Política monetária: elevações sistemáticas da taxa de juros para o controle inflacionário
-
-- Principais determinates da inflação:
-  - Desvalorização cambial
-  - Choque de preços administrados
-    - Desrepresamento dos preços administrados (MELLO; ROSSI, 2017)
   
   
 
 ## Gráficos - Período IV (2015-2016) {.smaller}
+<div style="float: left; width: 80%;">
 
 ```{r, fig.align='center', echo = FALSE}
 p_metas
@@ -302,12 +440,12 @@ p_metas
 <font size="3"> Fonte: IBGE e BCB. </font>
 
 ```{r, fig.align='center', echo = FALSE}
-p_IPCA_BCB
+p_juros_cambio
 ```
-<font size="3">  Fonte: IBGE e BCB. </font>
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
 
 ```{r, fig.align='center', echo = FALSE}
-p_IPCA_Ind
+p_IPCA_BCB
 ```
 <font size="3">  Fonte: IBGE e BCB. </font>
 
@@ -321,10 +459,56 @@ p_fiscal
 ```
 <font size="3"> Fonte: BCB. </font>
 
-```{r, fig.align='center', echo = FALSE}
-p_juros_cambio
-```
-<font size="3"> Fonte: BCB, IPEA e FED. </font>
+</div> 
+
+<div style="float: right; width: 20%;">
+<br>
+<br>
+<br>
+
+- Descumprimento da meta em 2015 e forte desaceleração em 2016.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Continuidade de elevações da Selic e manutenção em alto patamar
+- Expressiva desvalorização cambial
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Choque de preços administrados
+  - Desrepresamento dos preços administrados (MELLO; ROSSI, 2017)
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+- Recessão econômica
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+      
+- Fragilização do quadro fiscal
 
 ## Período V (2017-2019) {.smaller}
 
@@ -338,19 +522,21 @@ p_juros_cambio
 
 - Política monetária: novo período de reduções da taxa de juros
   - Inflação e nível de atividade baixos
-
-- Principais determinates da inflação:
-  - Desvalorização cambial
-  - Choque de preços administrados
   
   
 
 ## Gráficos - Período V (2017-2019) {.smaller}
+<div style="float: left; width: 80%;">
 
 ```{r, fig.align='center', echo = FALSE}
 p_metas
 ```
 <font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
 
 ```{r, fig.align='center', echo = FALSE}
 p_IPCA_BCB
@@ -367,10 +553,47 @@ p_PIB_Hiato
 ```
 <font size="3"> Fonte: BCB e IPEA. </font>
 
-```{r, fig.align='center', echo = FALSE}
-p_juros_cambio
-```
-<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+
+</div>
+
+<!------------------- Segunda Coluna ------------------------------------>
+
+<div style="float: right; width: 20%;">
+<br>
+<br>
+- Meta descumprida em 2017 e posterior estabilização
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Ciclo de reduções da taxa de juros
+- Leve trajetória de desvalorização cambial
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- $\uparrow$ Preços monitorados
+- $\downarrow$ Tradables
+  - Não duráveis e duráveis
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+  
+  
+</div>
 
 ## Período VI (2020-2021) {.smaller}
 
@@ -385,18 +608,6 @@ p_juros_cambio
     - Inflação e nível de atividade baixos
   - Aumentos da taxa juros
     - Inflação crescente
-
-- Principais determinates da inflação:
-  - Fatores altistas
-    - Desvalorização cambial
-    - *Commodities*
-      - Cortes de produção da OPEP
-    - Gargalos produtivos
-    - Preços monitorados
-      - Crise energética em 2021
-    
-  - Fatores baixistas
-    - Inflação de serviços em 2020
   
   
 
@@ -409,6 +620,11 @@ p_metas
 <font size="3"> Fonte: IBGE e BCB. </font>
 
 ```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+```{r, fig.align='center', echo = FALSE}
 p_IBC
 ```
 <font size="3"> Fonte: BCB e FMI. </font>
@@ -418,17 +634,16 @@ p_IPCA_BCB
 ```
 <font size="3">  Fonte: IBGE e BCB. </font>
 
-```{r, fig.align='center', echo = FALSE}
-p_juros_cambio
-```
-<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
 
 ```{r, fig.align='center', echo = FALSE}
-p_PIB_Hiato
+p_IPCA_Ind
 ```
 <font size="3"> Fonte: BCB e IPEA. </font>
 
 </div>
+
+<!------------------- Segunda Coluna ------------------------------------>
 
 <div style="float: right; width: 20%;">
 <br>
@@ -443,49 +658,39 @@ p_PIB_Hiato
 <br>
 <br>
 
+- Ciclo de juros: queda, estabilização e forte ascendência.
+- Forte desvalorização cambial em 2020 e volatilidade em 2021.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 - Escalada dos preços de *commodities*, com câmbio desvalorizado
   - Gargalos produtivos
   - Cortes de produção da OPEP
 
+
 <br>
 <br>
 <br>
 <br>
 <br>
 
+- Preços monitorados
+  - Crise energética em 2021
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Baixa pressão do setor de serviços.
+  
 </div>
-
-## aa
-
-
-```{r, fig.align='center', echo = FALSE}
-p_metas
-```
-<font size="3"> Fonte: IBGE e BCB. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_IBC
-```
-<font size="3"> Fonte: BCB e FMI. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_IPCA_BCB
-```
-<font size="3">  Fonte: IBGE e BCB. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_juros_cambio
-```
-<font size="3"> Fonte: BCB, IPEA e FED. </font>
-
-```{r, fig.align='center', echo = FALSE}
-p_PIB_Hiato
-```
-<font size="3"> Fonte: BCB e IPEA. </font>
-
-:::
-
-
 
 ## Conclusão
 
