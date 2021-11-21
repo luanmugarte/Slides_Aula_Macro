@@ -1,0 +1,539 @@
+---
+title: "Conjuntura Macroeconômica do Brasil (1999-2021)"
+author: "PED: Luan Mugarte"
+date: "22 de novembro de 2021"
+output: 
+  ioslides_presentation:
+    template: quarterly-report.html
+    widescreen: true
+    # incremental: true
+    css: 'styles.css'
+    fig_width: 8
+    fig_height: 3
+    fig_caption: true
+    logo: UNICAMP_logo.png
+
+
+---
+<style>
+pre {
+  font-size: 14px;
+}
+</style>
+
+```{r setup, include=FALSE, echo = F}
+# library(shiny)
+library(ggplot2)
+library(plotly)
+library(plyr)
+# library(flexdashboard)
+setwd("~/Doutorado/PED - CE342/Aulas/Macro/Slides_Aula_Macro")
+
+source('Pacotes.R', verbose = F)
+source('Graficos_Aula_Macro.R', verbose = F)
+```
+
+
+## Sumário
+
+- Introdução
+
+- Conjuntura Macroeconômica (1999-2021)
+
+  - Período I (1999-2003)
+
+  - Período II (2004-2010)
+
+  - Período III (2011-2014)
+
+  - Período IV (2015-2016)
+
+  - Período V (2017-2019)
+
+  - Período VI (2020-2021)
+  
+- Conclusão
+
+
+
+<!----------------------------------------------------------------------------->
+<!----------------                                      ----------------------->
+<!----------------                GŔAFICOS              ----------------------->
+<!----------------                                      ----------------------->
+<!----------------------------------------------------------------------------->
+
+Introdução
+=======================================================================
+
+## Introdução
+
+- Panorâma geral da conjuntura macroeconômica do Brasil entre 1999 e 2021
+
+- Antecedentes
+
+  - Plano Real (1994) e primeiro governo FHC (1994-1999)
+    - Estabilização da inflação
+    - Acúmulo de reservas internacionais 
+    - Reformas liberalizantes
+    
+  - Crises nos países emergentes
+    - México (1995), Sudeste Asiático (1997-1998), Russa (1998)
+    - Ataques especulativos
+    
+  - Adoção do regime de câmbio flutuante (1999)
+  
+  - Adoção do RMI (1999)
+
+
+## Introdução {.smaller .build}
+
+- De acordo com o arcabouço teórico do NCM e do RMI brasileiro, quais variáveis o Banco Central brasileiro (BCB) acompanha e monitora para guiar suas decisões da política monetária?
+
+  - Inflação
+    - **Nível e tendência**, desvios da meta e expectativas.
+  
+  - Demanda agregada
+    - **Hiato do produto**
+    - Mercado de trabalho
+    - Mercado de crédito
+    
+  - Ambiente externo
+    - **Taxa de câmbio**
+    - Preços de ***commodities***
+    - Comércio exterior e reservas internacionais
+  
+  - Mercado monetário
+  
+- Choques: transitórios ou persistentes?
+  
+## Conjuntura Macroeconômica (1999-2021) {.smaller}
+
+-  Períodos de aceleração e de estabilização inflacionária 
+
+-  Principais determinantes da inflação no período 
+
+  - Importância da taxa de câmbio: como fator acelerador (atenuante) da inflação (ARAUJO; MODENESI, 2010; SERRANO; SUMMA, 2015) e canal de transmissão (SERRANO, 2010) 
+    - Preços monitorados (até 2006) e bens tradables (especialmente, do grupo de Alimentação e Bebidas) 
+    
+  - Importância dos preços de *commodities* 
+    - Relação significativa com a taxa de câmbio (STOCKL; MOREIRA; GIUBERTI, 2017) 
+  
+  - Menor relevância da demanda agregada (ARAÚJO; MODENESI, 2010; BRAGA, 2013) 
+    - Maior influência sobre o mercado de trabalho e sobre a inflação de serviços (SUMMA; SERRANO, 2018). 
+
+## Conjuntura Macroeconômica (1999-2021) 
+
+- E como o Regime de Metas da Inflação lidou com a inflação nesse período? 
+
+  - Altas taxas de juros nominais até 2011 (MODENESI, 2012; BARBOZA, 2015)
+
+- A partir de 2011, há uma tentativa de alterar a dinâmica da política monetária.
+
+  - Encontra dificuldades em virtude de maiores pressões inflacionárias.
+
+- Após a crise de 2015 e lenta recuperação econômica, observou-se uma tendência de redução do patamar da taxa de juros nominal.
+
+- Reversão em 2021 com a recente escalada da inflação.
+
+Análise dos períodos
+=======================================================================
+
+## Período I (1999-2003)
+
+- Trata-se de um período marcado por inflação relativamente alta, processo de desvalorização cambial e altas taxas de juros nominais. 
+
+  - Descumprimento da meta nos anos de 2001, 2002 e 2003. 
+
+- Principais determinates da inflação:
+  - Inflação de preços monitorados 
+    - Desvalorização cambial em 1999
+    - Crise energética nos anos 2001
+    - Turbulência política e forte desvalorização cambial em 2002
+  
+  - Bens tradables
+    - Desvalorização cambial e preços de *commodities* (em menor medida)
+
+## Gráficos - Período I (1999-2003) {.smaller}
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+## Período II (2004-2010) {.smaller}
+
+- Características do período:
+  - Inflação mais baixa e estável, oscilando sobre a meta
+  - Processo de valorização cambial
+  - Patamar de crescimento econômico mais elevado
+  - Contínuo aquecimento do mercado de trabalho, estimulado pelas políticas sociais
+  - Manutenção das altas taxas de juros nominais - isto é, elevados juros reais. 
+
+- Principais determinates da inflação:
+  - Fatores altistas
+    - Aquecimento do mercado de trabalho
+      - Inflação de serviços e de semiduráveis
+    - Ciclo de *commodities*
+      - Gêneros alimentícios
+      
+  - Fatores baixistas
+    - Valorização cambial
+      - Auxilia no controle dos bens tradables
+    - Preços de bens duráveis
+      - Economias de escala, câmbio valorizado e inovações (BRAGA, 2013; SANTORO, 2015)
+      - Redução do IPI para automóveis em 2008
+    - Crise de 2008
+
+## Gráficos - Período II (2004-2010) {.smaller}
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_PIB_Hiato
+```
+<font size="3"> Fonte: BCB e IPEA. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_VIX_MSCI
+```
+<font size="3"> Fonte: CBOE. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IBC
+```
+<font size="3"> Fonte: BCB e FMI. </font>
+
+```{r, fig.align='center', echo = FALSE}
+knitr::include_graphics("Dados/Mercado_trabalho.png")
+```
+
+## Período III (2011-2014) {.smaller}
+
+- Características do período:
+  - Inflação mais alta, porém relativamente estável, situando-se perto do teto
+  - Tendência de desvalorização cambial
+  - Taxas de crescimento do PIB menores
+  - Mercado de trabalho aquecido
+  
+- Política monetária: ruptura e tentativa de reduzir o patamar da taxa de juros nominal, posteriormente interrompido.
+  - Agenda Fiesp (Carvalho, 2018)
+
+- Principais determinates da inflação:
+  - Fatores altistas
+    - Mercado de trabalho aquecido
+      - Inflação de serviços
+
+  - Fatores baixistas
+    - Desonerações tributárias e preços monitorados
+      - Energia elétrica, CIDE de combustível, IPI de automóveis (2012)
+
+## Gráficos - Período III (2011-2014) {.smaller}
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+knitr::include_graphics("Dados/Mercado_trabalho.png")
+```
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_Ind
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+## Período IV (2015-2016) {.smaller}
+
+- Características do período:
+  - Inflação bem elevada, descumprindo a meta em 2015
+  - Forte desvalorização cambial
+  - Recessão econômica
+  - *Impeachment* da Dilma e início do período de reformas estruturais
+    - PEC do Teto de Gastos (2016)
+
+- Política monetária: elevações sistemáticas da taxa de juros para o controle inflacionário
+
+- Principais determinates da inflação:
+  - Desvalorização cambial
+  - Choque de preços administrados
+    - Desrepresamento dos preços administrados (MELLO; ROSSI, 2017)
+  
+  
+
+## Gráficos - Período IV (2015-2016) {.smaller}
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_Ind
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_PIB_Hiato
+```
+<font size="3"> Fonte: BCB e IPEA. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_fiscal
+```
+<font size="3"> Fonte: BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+## Período V (2017-2019) {.smaller}
+
+- Características do período:
+  - Inflação baixa, descumprindo a meta em 2017 (para baixo!)
+  - Lento crescimento econômico
+  - Eleições de 2018
+  - Continuidade de reformas
+    - Reforma Trabalhista (2017)
+    - Reforma da Previdência (2019)
+
+- Política monetária: novo período de reduções da taxa de juros
+  - Inflação e nível de atividade baixos
+
+- Principais determinates da inflação:
+  - Desvalorização cambial
+  - Choque de preços administrados
+  
+  
+
+## Gráficos - Período V (2017-2019) {.smaller}
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_Ind
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_PIB_Hiato
+```
+<font size="3"> Fonte: BCB e IPEA. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+## Período VI (2020-2021) {.smaller}
+
+- Características do período:
+  - Crise de Covid-19
+  - Recessão econômica
+  - Desvalorização cambial
+  - Inflação em trajetória ascendente após meados de 2020
+
+- Política monetária
+  - Reduções da taxa de juros
+    - Inflação e nível de atividade baixos
+  - Aumentos da taxa juros
+    - Inflação crescente
+
+- Principais determinates da inflação:
+  - Fatores altistas
+    - Desvalorização cambial
+    - *Commodities*
+      - Cortes de produção da OPEP
+    - Gargalos produtivos
+    - Preços monitorados
+      - Crise energética em 2021
+    
+  - Fatores baixistas
+    - Inflação de serviços em 2020
+  
+  
+
+## Gráficos - Período VI (2020-2021) {.smaller}
+
+<div style="float: left; width: 80%;">
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IBC
+```
+<font size="3"> Fonte: BCB e FMI. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_PIB_Hiato
+```
+<font size="3"> Fonte: BCB e IPEA. </font>
+
+</div>
+
+<div style="float: right; width: 20%;">
+<br>
+<br>
+<br>
+
+- Muito provável descumprimento da meta em 2021
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Escalada dos preços de *commodities*, com câmbio desvalorizado
+  - Gargalos produtivos
+  - Cortes de produção da OPEP
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+## aa
+
+
+```{r, fig.align='center', echo = FALSE}
+p_metas
+```
+<font size="3"> Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IBC
+```
+<font size="3"> Fonte: BCB e FMI. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_IPCA_BCB
+```
+<font size="3">  Fonte: IBGE e BCB. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_juros_cambio
+```
+<font size="3"> Fonte: BCB, IPEA e FED. </font>
+
+```{r, fig.align='center', echo = FALSE}
+p_PIB_Hiato
+```
+<font size="3"> Fonte: BCB e IPEA. </font>
+
+:::
+
+
+
+## Conclusão
+
+- Entre 1999 e 2021, a inflação brasileira apresentou períodos de (relativa) estabilidade e aceleração
+  - Importância da dinâmica da taxa de câmbio, tanto como atenuador quanto acirrador
+  - Significativo peso dos preços de *commodities* e monitorados
+  - Nível de atividade influencia mais incisivamente pelo aquecimento do mercado de trabalho
+  
+- E a política monetária?
+  - Entre 1999 e 2011, manteve-se sob altas taxas de juros nominais
+  - De 2011 a 2013, há uma ruptura dessa tendência
+  - De 2013 a 2015, volta-se ao "conservadorismo" monetário
+  - De 2015 até 2021, trajetória de redução do patamar das taxas de juros nominais
+    - Nível de atividade retraído
+  - De março de 2021, novo ciclo de elevações da Selic
+  
+## Conclusão
+
+- Análise das atas
+  - Avaliação da conjuntura, tendência e expectativas
+    - Trazer informações mais relevantes
+  - Decisão do COPOM
+    - Refletindo sobre o conjunto de informações e com base na teoria e empiria, motivação para a decisão
+    
+    
+## Referências Bibliográficas {.smaller}
+
+BARBOZA, Ricardo de Menezes. Taxa de juros e mecanismos de transmissão da política monetária no Brasil. *Brazilian Journal of Political Economy*, v. 35, p. 133-155, 2015.
+
+ARAÚJO, E. C. de; MODENESI, A. de M. A importância do setor externo na evolução do IPCA (1999-2010): uma análise com base em um modelo SVAR. XXVIII Encontro Nacional de Economia, Salvador, 2010.
+
+MELLO, G.; ROSSI, P. Do industrialismo à austeridade: a política macro dos governos Dilma. *Texto para discussão, Instituto de Economia - Unicamp, n. 309*, p. 1–36, 2017.
+
+CARVALHO, Laura. Valsa brasileira: do boom ao caos econômico. Editora Todavia SA, 2018.
+
+SANTORO, J. P. C. *A Inflação Brasileira entre 2000 e 2014: um Enfoque Heterodoxo*. Dissertação (Mestrado) — Universidade Federal do Rio de Janeiro, 2015.
+
+MODENESI, A. de M.; MODENESI, R. L. Quinze anos de rigidez monetária no Brasil pós-Plano Real: uma agenda de pesquisa. *Brazilian Journal of Political Economy*, v. 32, n. 3, p. 389–411, 2012.
+
+BRAGA, J. de M. A inflação brasileira na década de 2000 e a importância das políticas não monetárias de controle. *Economia e Sociedade*, SciELO Brasil, v. 22, n. 3, p. 697–727, 2013.
+
+MARTINEZ, T. S.; CERQUEIRA, V. dos S. Estrutura da inflação brasileira: determinantes e desagregação do IPCA. *Texto para Discussão, Instituto de Pesquisa Econômica Aplicada (IPEA)*, 2011.
+
+SERRANO, F. Juros, câmbio e o sistema de metas de inflação no Brasil. *Brazilian Journal of Political Economy*, SciELO Brasil, v. 30, n. 1, p. 63–72, 2010.
+
+SUMMA, R.; SERRANO, F. Distribution and conflict inflation in Brazil under inflation targeting, 1999–2014. *Review of Radical Political Economics*, v. 50, n. 2, p. 349–369, 2018.
+
+CARVALHO, S. S. de. Construção de séries longas de alta frequência de indicadores do mercado de trabalho com a PME e a PNADC. Instituto de Pesquisa Econômica Aplicada (IPEA), 2016.
+
+
+STOCKL, M.; MOREIRA, R. R.; GIUBERTI, A. C. O impacto das commodities sobre a dinâmica da inflação no Brasil e o papel amortecedor do câmbio: evidências para o CRB Index e Índice de Commodities Brasil. *Nova Economia*, v. 27, n. 1, p. 173–207, 2017

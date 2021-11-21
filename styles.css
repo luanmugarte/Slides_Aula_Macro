@@ -1,0 +1,14 @@
+slides > slide {
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+slides > slide:not(.nobackground):after {
+  content: '';
+}
+
+slides > slide:not(.nobackground):before {
+  width: 150px;
+  height: 75px;
+  background-size: 0px 0px;
+}

@@ -1,16 +1,19 @@
 ---
-title: "Aula - Macro"
-author: "Luan Mugarte"
+title: "Conjuntura Macroeconômica do Brasil (1999-2021)"
+# author: "PED: Luan Mugarte"
 output: 
   flexdashboard::flex_dashboard:
-    vertical_layout: scroll
+    storyboard: true
     orientation: rows
-    social: menu
-    source_code: embed
+    vertical_layout: scroll
+    # social: menu
+    # source_code: embed
+    theme: cosmo
+# runtime: shiny
 ---
 
-
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo = FALSE, verbose = FALSE}
+library(shiny)
 library(ggplot2)
 library(plotly)
 library(plyr)
@@ -21,14 +24,84 @@ source('Pacotes.R', verbose = F)
 source('Graficos_Aula_Macro.R', verbose = F)
 ```
 
-Inflação, Metas e decomposição
+<!----------------------------------------------------------------------------->
+<!----------------                                      ----------------------->
+<!----------------                SLIDES                ----------------------->
+<!----------------                                      ----------------------->
+<!----------------------------------------------------------------------------->
+
+<!-- Page 2 {data-navmenu="Menu A"} -->
+<!-- =====================================   -->
+
+
+<!-- Page 3 {data-navmenu="Menu A"} -->
+<!-- ===================================== -->
+
+
+<!-- Page 4 {data-navmenu="Menu A"} -->
+<!-- =====================================   -->
+<!-- Page 1 {data-navmenu="Slides"} -->
+<!-- ===================================== -->
+
+Inicial {data-navmenu="Slides"}
+=====================================================================
+
+## Hello 
+
+Conjuntura Macroeconômica do Brasil (1999-2021)
+
+PED: Luan Mugarte
+
+<!-- Sidebar {.sidebar} -->
+<!-- ====================================================================== -->
+***
+
+AAAA {.tabset}
+----------------------------------------------------------------------
+
+Alright
+
+***
+Uai
+-------
+
+- Yes
+***
+# A  {data-navmenu="Slides"}
+
+- Introdução
+
+- Conjuntura Macroeconômica (1999-2021)
+
+  - Período I (1999-2003)
+
+  - Período II (2004-2010)
+
+  - Período III (2011-2014)
+
+  - Período IV (2015-2016)
+
+  - Período V (2017-2019)
+
+  - Período VI (2020-2021)
+  
+- Conclusão
+
+
+
+<!----------------------------------------------------------------------------->
+<!----------------                                      ----------------------->
+<!----------------                GŔAFICOS              ----------------------->
+<!----------------                                      ----------------------->
+<!----------------------------------------------------------------------------->
+
+Inflação, Metas e decomposição {data-navmenu="Gráficos e tabela"}
 =======================================================================
 
 Row
 -----------------------------------------------------------------------
 
-### Metas de Inflação
-
+### Regime de Metas de Inflação
 ```{r}
 p_metas
 
@@ -53,7 +126,7 @@ p_IPCA_Ind
 ```
 
 
-RMI e setor externo
+RMI e setor externo {data-navmenu="Gráficos e tabela"}
 =======================================================================
 
 Row
@@ -65,19 +138,23 @@ Row
 p_IBC
 ```
 
+Row
+-----------------------------------------------------------------------
 ### Taxa Selic, FED Rates, Risco Soberano e Taxa de Câmbio nominal
 
 ```{r}
 p_juros_cambio
 ```
 
+Row
+-----------------------------------------------------------------------
 ### indices MSCI e VIX
 
 ```{r}
 p_VIX_MSCI
 ```
 
-Atividade Econômica
+Atividade Econômica {data-navmenu="Gráficos e tabela"}
 =======================================================================
 
 Row
@@ -89,7 +166,7 @@ Row
 p_PIB_Hiato
 ```
 
-Mercado de trabalho
+Mercado de trabalho {data-navmenu="Gráficos e tabela"}
 =======================================================================
 
 Row

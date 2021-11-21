@@ -55,6 +55,8 @@ ibc_energia <- as.xts(ts((ibc[,5]), start = c(1999,8), end = c(2021,10), frequen
 ibc_df <- reshape2::melt(ibc, id.vars = "Data")
 ibc_df$Data <- seq(as.Date("1999-08-1"), as.Date("2021-10-1"), by = "month")
 
+fmi_comm <- read_excel("Dados/FMI_comm.xlsx", col_names = c('date','FMI Index','FMI Petróleo'))
+fmi_comm
 
 #ggplot(ibc_df) + geom_line(aes(x=Data,y=value,color=variable,linetype=variable), size = 1)
 
@@ -103,6 +105,10 @@ MSCI
 # MSCI <- as.xts(ts((MSCI[,2]), start = c(2004,8), end = c(2021,10), frequency = 12))
 # plot(MSCI)
 
+# Fiscal ####
+fiscal <- read.csv('Dados/Resultado_primario_divida.csv', sep = ';', dec = ',')
+fiscal
+
 #######################################################################
 #                                                                     #
 #                     GRÁFICOS                                        #
@@ -130,8 +136,8 @@ df_metas <- tibble(date,metas_mensal[,2],metas_mensal[,3],metas_mensal[,4],metas
 #                     col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
 
 
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
 
 metas_mensalplot <- ggplot(df_metas)  + 
@@ -164,7 +170,8 @@ metas_mensalplot <- ggplot(df_metas)  +
 
 metas_mensalplot
 p <- ggplotly(metas_mensalplot) %>%
-  layout(legend = list(orientation = "h", x = 0, y =-0.1))
+  layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
+  config(displayModeBar = FALSE)
 p
 # For loop para remover legendas
 for (i in 1:8) {
@@ -186,8 +193,8 @@ df <- tibble(date,IPCA_trad, IPCA_nontrad,IPCA_monit,df_metas[,5])
 colnames(df) <- c('date','Tradables','Nontradables','Monitorados','IPCA')
 df
 
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
 
 df %>%
@@ -197,6 +204,8 @@ df
 
 IPCA_BCB_plot <- ggplot(df)  + 
   geom_ribbon(data = df_metas, aes(x=date, ymin=Piso, ymax =Teto), fill = "GREY80") +
+  geom_line(data = metas_mensal,aes(x=date, y=Piso), color = "GREY70") +
+  geom_line(data = metas_mensal,aes(x=date, y=Teto), color = "GREY70") +
   #geom_ribbon(data= df_metas, aes(x=date, ymin=Piso, ymax =Meta), fill = "GREY80") +
   geom_rect(data = rects_mensal, aes(xmin = xstart, xmax = xend, ymin = min(df$value)-1, ymax = max(df$value)+1, fill = col), alpha = 0.4) +
   geom_line(aes(x=date, y=value, color=variable, linetype = variable), size = 1) +
@@ -224,14 +233,16 @@ IPCA_BCB_plot <- ggplot(df)  +
 IPCA_BCB_plot
 
 p <- ggplotly(IPCA_BCB_plot) %>%
-  layout(legend = list(orientation = "h", x = 0, y =-0.1))
+  layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
+  config(displayModeBar = FALSE)
 
 # For loop para remover legendas
-for (i in 2:7) {
+for (i in 2:9) {
   p$x$data[[i]]$showlegend <- F
   
 }
 p_IPCA_BCB <- p
+p_IPCA_BCB
 
 # IPCA Industrializados e Serviços ####
 
@@ -241,15 +252,16 @@ date <- seq(as.Date("1999-08-1"), as.Date("2021-10-1"), by = "month")
 df <- tibble(date,IPCA_dur, IPCA_semidur,IPCA_ndur,IPCA_servicos,df_metas[,5],
              .name_repair = ~ c('date','Duráveis','Semiduráveis','Não duráveis','Serviços','IPCA'))
 
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
-
 df <- reshape2::melt(df, id.vars= 'date')
 df
 
 IPCA_Ind_plot <- ggplot(df)  + 
   geom_ribbon(data = df_metas, aes(x=date, ymin=Piso, ymax =Teto), fill = "GREY80") +
+  geom_line(data = metas_mensal,aes(x=date, y=Piso), color = "GREY70") +
+  geom_line(data = metas_mensal,aes(x=date, y=Teto), color = "GREY70") +
   geom_rect(data = rects_mensal, aes(xmin = xstart, xmax = xend, ymin = min(df$value)-1, ymax = max(df$value)+1, fill = col), alpha = 0.4) +
   geom_line(aes(x=date, y=value, color=variable, linetype = variable), size = 1) +
   scale_y_continuous(labels = function(x) paste0(x, "%"),breaks = scales::pretty_breaks(n = 6), expand = c(0,0)) +
@@ -274,10 +286,11 @@ IPCA_Ind_plot <- ggplot(df)  +
 IPCA_Ind_plot
 
 p <- ggplotly(IPCA_Ind_plot) %>%
-  layout(legend = list(orientation = "h", x = 0, y =-0.1))
+  layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
+  config(displayModeBar = FALSE)
 
 # For loop para remover legendas
-for (i in 2:7) {
+for (i in 2:9) {
   p$x$data[[i]]$showlegend <- F
   
 }
@@ -290,15 +303,14 @@ p_IPCA_Ind <- p
 date <- seq(as.Date("1999-08-1"), as.Date("2021-10-1"), by = "month")
 ibc_total
 colnames(ibc_total) <- 'IBC'
-
-df <- tibble(date, ibc_total, ibc_agro, ibc_metal, ibc_energia,
-             .name_repair = ~ c('date','IBC - Total','IBC - Agro','IBC - Metal','IBC - Energia'))
+fmi_comm[,2]
+df <- tibble(date, ibc_total, ibc_agro, ibc_metal, ibc_energia,fmi_comm[,2], fmi_comm[,3],
+             .name_repair = ~ c('date','IBC - Total','IBC - Agro','IBC - Metal','IBC - Energia','Índice FMI', 'Índice FMI - Petróleo'))
 df
 
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
-
 df %>%
   mutate(across(!date,as.numeric))
 df <- reshape2::melt(df, id.vars= 'date')
@@ -330,7 +342,8 @@ IBC_plot <- ggplot(df)  +
 IBC_plot
 
 p <- ggplotly(IBC_plot) %>%
-  layout(legend = list(orientation = "h", x = 0, y =-0.1))
+  layout(legend = list(orientation = "h", x = 0, y =-0.2)) %>%
+  config(displayModeBar = FALSE)
 # For loop para remover legendas
 for (i in 1:6) {
   p$x$data[[i]]$showlegend <- F
@@ -338,6 +351,66 @@ for (i in 1:6) {
 }
 p_IBC <- p
 
+
+
+
+# Fiscal ####
+
+date <- seq(as.Date("2002-11-1"), as.Date("2021-09-1"), by = "month")
+
+df <- tibble(date, fiscal[,2], fiscal[,3],
+             .name_repair = ~ c('date','DLSP','Resultado Primário (NFSP)'))
+
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-31"),as.Date( "2021-10-1")),
+                           col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
+
+df %>%
+  mutate(across(!date,as.numeric))
+df <- reshape2::melt(df, id.vars= 'date')
+
+df
+fiscal_plot <- ggplot(df)  + 
+  #geom_ribbon(data = df_metas, aes(x=date, ymin=Piso, ymax =Teto), fill = "GREY80") +
+  geom_hline(yintercept = 0, colour= 'darkgrey') +
+  geom_rect(data = rects_mensal, aes(xmin = xstart, xmax = xend, ymin = min(df$value)-1, ymax = max(df$value)+1, fill = col), alpha = 0.4) +
+  geom_line(aes(x=date, y=value, color=variable, linetype = variable),stat="identity", size = 1) +
+  scale_y_continuous(labels = function(x) paste0(x, ""),breaks = scales::pretty_breaks(n = 6), expand = c(0,0)) +
+                     # sec.axis = sec_axis(~(./max(df[which(df['variable'] == ''),'value'])*5)), name="") +
+  scale_x_date(date_breaks = '1 year', date_minor_breaks = '6 months', date_labels = "%y",expand = c(0, 0.02)) +
+  labs(title = 'DLSP e Resultado Primário (NFSP)') +
+  scale_fill_brewer(palette="Blues", name = 'Períodos') +
+  scale_color_brewer(palette="Set1", name = 'Períodos') +
+  guides(linetype = "none", fill = 'none') +
+  ylab('') +
+  xlab('') +
+  theme_classic() +
+  theme(  panel.grid = element_blank(), 
+          panel.border = element_blank(),
+          legend.position="bottom",
+          legend.title = element_blank(),
+          legend.text = element_text(size=10),
+          legend.key = element_rect(colour = "black"),
+          legend.box.background = element_rect(colour = "black", size = 1),
+          axis.text.x = element_text(angle = 45, vjust = 0.5, hjust = 0.6,size=10, colour = 'black'),
+          axis.text.y = element_text(size=10)) 
+
+fiscal_plot
+
+p <- ggplotly(fiscal_plot) %>%
+  layout(legend = list(orientation = "h", x = 0, y =-0.2)
+  )%>%
+  config(displayModeBar = FALSE)
+
+
+
+# For loop para remover legendas
+for (i in 1:7) {
+  p$x$data[[i]]$showlegend <- F
+  
+}
+p_fiscal <- p
+p_fiscal
 
 
 # Cambio, Fed, EMBI ####
@@ -352,14 +425,14 @@ plot(fed_embi)
 plot(embi_2)
 fed_rate
 
-df <- tibble(date, selic, embi_2,fed_embi, cambio,
-             .name_repair = ~ c('date','Selic','EMBI-Br','FED Rates + EMBI-Br','Taxa de câmbio nominal'))
+df <- tibble(date, selic, embi_2,fed_embi, fed_rate,cambio,
+             .name_repair = ~ c('date','Selic','EMBI-Br','FED Rates + EMBI-Br','FED Rates' ,'Taxa de câmbio nominal'))
 df <- df %>%
   fill(Selic)
 df$`Taxa de câmbio nominal` <- df$`Taxa de câmbio nominal` *5
 df
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
 
 df %>%
@@ -374,7 +447,7 @@ Juros_cambio_plot <- ggplot(df)  +
   scale_y_continuous(labels = function(x) paste0(x, ""),breaks = scales::pretty_breaks(n = 6), expand = c(0,0),
                      sec.axis = sec_axis(~(./max(df[which(df['variable'] == 'Selic'),'value'])*5)), name="") +
   scale_x_date(date_breaks = '1 year', date_minor_breaks = '6 months', date_labels = "%y",expand = c(0, 0.02)) +
-  labs(title = 'Taxa Selic, FED Rates + EMBI-Br e Taxa de câmbio nominal') +
+  labs(title = 'Taxa Selic, FED Rate, EMBI-Br e Taxa de câmbio nominal') +
   scale_fill_brewer(palette="Blues", name = 'Períodos') +
   scale_color_brewer(palette="Set1", name = 'Períodos') +
   guides(linetype = "none", fill = 'none') +
@@ -408,8 +481,9 @@ ay <- list(
 p <- ggplotly(Juros_cambio_plot) %>%
   add_lines(x=~date, y=~value, colors=NULL, yaxis="y2", 
             data=df, showlegend=FALSE, inherit=FALSE) %>%
-  layout(yaxis2 = ay, legend = list(orientation = "h", x = 0, y =-0.05)
-         )
+  layout(yaxis2 = ay, legend = list(orientation = "h", x = 0, y =-0.2)
+         )%>%
+  config(displayModeBar = FALSE)
 
 
 
@@ -429,10 +503,9 @@ df <- tibble(date, pib, hiato_pib_2,
              .name_repair = ~ c('date','PIB','Hiato do PIB'))
 df
 
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
-
 df %>%
   mutate(across(!date,as.numeric))
 df <- reshape2::melt(df, id.vars= 'date')
@@ -465,7 +538,8 @@ PIB_Hiato_plot <- ggplot(df)  +
 PIB_Hiato_plot
 
 p <- ggplotly(PIB_Hiato_plot) %>%
-  layout(legend = list(orientation = "h", x = 0, y =-0.1))
+  layout(legend = list(orientation = "h", x = 0, y =-0.2))%>%
+  config(displayModeBar = FALSE)
 p
 # For loop para remover legendas
 for (i in 1:6) {
@@ -491,10 +565,9 @@ df_2 <- data.frame(date = date,
                  )
 df_2
 
-rects_mensal <- data.frame(xstart = c(as.Date("1999-08-1"),as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1")),
-                           xend = c(as.Date("2004-12-1"),as.Date("2011-12-1"),as.Date("2015-12-1"),as.Date("2017-12-1"),as.Date("2019-12-1"),as.Date( "2021-10-1")),
+rects_mensal <- data.frame(xstart = c(as.Date("1999-08-30"),as.Date("2004-01-01"),as.Date("2011-01-01"),as.Date("2015-01-01"),as.Date("2017-01-01"),as.Date("2020-01-01")),
+                           xend = c(as.Date("2003-12-31"),as.Date("2010-12-31"),as.Date("2014-12-31"),as.Date("2016-12-31"),as.Date("2019-12-30"),as.Date( "2021-10-1")),
                            col = c('I (99-03)','II (04-10)','III (11-14)','IV (15-16)','V (17-19)','VI (20-21)'))
-
 df <- tibble(df_2) %>%
   mutate(across(!date,as.numeric))
 df <- reshape2::melt(df, id.vars= 'date')
@@ -507,7 +580,7 @@ VIX_MSCI_plot <- ggplot(df)  +
   scale_y_continuous(labels = function(x) paste0(x, ""),breaks = scales::pretty_breaks(n = 6), expand = c(0,0),
                      sec.axis = sec_axis(~(./scale), name="")) +
   scale_x_date(date_breaks = '1 year', date_minor_breaks = '6 months', date_labels = "%y",expand = c(0, 0.02)) +
-  labs(title = 'Índice MSCI e Índice MSCI') +
+  labs(title = 'Índice MSCI e Índice VIX') +
   scale_fill_brewer(palette="Blues", name = 'Períodos') +
   scale_color_brewer(palette="Set1", name = 'Períodos') +
   guides(linetype = "none", fill = 'none') +
@@ -540,9 +613,11 @@ p <- ggplotly(VIX_MSCI_plot) %>%
   add_lines(x=~date, y=~value, colors=NULL, yaxis="y2", 
             data=df, showlegend=FALSE, inherit=FALSE) %>%
   layout(yaxis2 = ay,
-         legend = list(orientation = "h", x = 0, y =-0.05),
+         legend = list(orientation = "h", x = 0, y =-0.2),
          margin = list(r = 25)
-  )
+         
+  ) %>%
+  config(displayModeBar = FALSE)
 p
 
 # For loop para remover legendas
@@ -551,3 +626,22 @@ for (i in 1:6) {
   
 }
 p_VIX_MSCI <- p
+
+
+# Configurações finais ####
+?list
+
+list_p <- list(p_IBC,p_fiscal,p_IPCA_BCB,p_IPCA_Ind,p_juros_cambio,p_metas,p_PIB_Hiato,p_VIX_MSCI)
+list_names <- c('p_IBC','p_fiscal','p_IPCA_BCB','p_IPCA_Ind','p_juros_cambio','p_metas','p_PIB_Hiato','p_VIX_MSCI')
+counter <- 0
+# For loop para arrumar os nomes das legendas 
+# Saia como (Tradables,1) invés de só Tradables
+for (j in list_p){
+  for (i in 1:length(j$x$data)){
+    if (!is.null(j$x$data[[i]]$name)){
+      j$x$data[[i]]$name =  gsub("\\(","",str_split(j$x$data[[i]]$name,",")[[1]][1])
+    }
+  }
+  counter <- counter + 1
+  assign(list_names[(counter)],j)
+}
